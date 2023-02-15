@@ -1,5 +1,4 @@
 import { useReducer } from 'react'
-
 import CartContext from "./cart-context";
 
 const defaultCartState = {
@@ -20,7 +19,6 @@ const cartReducer = (state, action) => {
 };
 
 const CartContextProvider = (props) => {
-
   const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState);
 
   const addItemHandler = (item) => {
@@ -38,13 +36,15 @@ const CartContextProvider = (props) => {
   };
 
   const cartContext = {
-    items: cartState.item,
+    items: cartState.items,
     totalAmount: cartState.amount,
     addItem: addItemHandler,
     removeItem: removeItemHandler,
   };
 
-  return <CartContext.Provider value={cartContext}>{props.children}</CartContext.Provider>
+  return <CartContext.Provider value={cartContext}>
+    {props.children}
+  </CartContext.Provider>
 };
 
 export default CartContextProvider
