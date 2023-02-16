@@ -5,6 +5,7 @@ import CartContext from '../../../store/cart-context'
 
 const MealItem = (props) => {
   const cartContext = useContext(CartContext)
+  const formattedPrice = `$${props.price.toFixed(2)}`
 
   const addToCartHandler = (amount) => {
     cartContext.addItem({
@@ -15,7 +16,7 @@ const MealItem = (props) => {
     })
   }
 
-  const formattedPrice = `$${props.price.toFixed(2)}`
+
 
   return (
     <li key={props.key} className={styles.meal}>
